@@ -1,13 +1,23 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { FiAlignJustify } from "react-icons/fi";
 import { IoCloseSharp } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 const Navbar = () => {
  
   const[isOpen,setIsOpen]=useState(false);
+  const[activeLink,setActiveLink]=useState();
+  const location=useLocation();
 
-  
+  useEffect(()=>{
+    setActiveLink(location.pathname)
+
+  },[location.pathname])
+
+  const handleLinkClick=(path)=>{
+    setActiveLink(path)
+  }
   const collapseOpen=()=>{
     setIsOpen(!isOpen)
   }
@@ -24,11 +34,11 @@ const Navbar = () => {
           </div>
           {/*collapse bar icon */}
           <ul className="hidden md:flex  gap-4">
-            <li className=" hover:text-amber-500"><Link to ={"/"}>Home</Link></li>
-            <li className=" hover:text-amber-500"><Link to={"/contact"}>Contact</Link></li>
-            <li className=" hover:text-amber-500"><Link to={"/product"}>Product</Link></li>
-            <li className=" hover:text-amber-500"><Link to={"/location"}>Location</Link></li>
-            <li className=" hover:text-amber-500"><Link to={"/about"}>About Us</Link></li>
+            <li><Link to ={"/"} onClick={()=>handleLinkClick('/')} className={`${activeLink==='/'? "text-amber-600":"hover:text-amber-500" }`}>Home</Link></li>
+            <li><Link to={"/contact"} onClick={()=>handleLinkClick('/contact')} className={`${activeLink==='/contact'? "text-amber-600":"hover:text-amber-500" }`}>Contact</Link></li>
+            <li><Link to={"/product"} onClick={()=>handleLinkClick('/product')} className={`${activeLink==='/product'? "text-amber-600":"hover:text-amber-500" }`}>Product</Link></li>
+            <li><Link to={"/location"} onClick={()=>handleLinkClick('/location')} className={`${activeLink==='/location'? "text-amber-600":"hover:text-amber-500" }`}>Location</Link></li>
+            <li><Link to={"/about"} onClick={()=>handleLinkClick('/about')} className={`${activeLink==='/about'? "text-amber-600":"hover:text-amber-500" }`}>About Us</Link></li>
           </ul>
           <button className="hidden md:block bg-white text-black font-bold hover:bg-gray-300 hover:text-green-500 rounded py-2 px-4 ">Login</button>
 
