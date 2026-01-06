@@ -7,15 +7,13 @@ const Navbar = () => {
  
   const[isOpen,setIsOpen]=useState(false);
 
-  const activeLink=()=>{
-    setActiveColor('path')
-  }
+  
   const collapseOpen=()=>{
     setIsOpen(!isOpen)
   }
 
   return (
-    <div className="bg-black text-white py-4 relative">
+    <div className="bg-black text-white py-4 sticky top-0 left-0">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold hover:text-gray-300">logo</h1>
 
