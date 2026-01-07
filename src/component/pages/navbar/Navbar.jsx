@@ -40,7 +40,8 @@ const Navbar = () => {
             <li><Link to={"/location"} onClick={()=>handleLinkClick('/location')} className={`${activeLink==='/location'? "text-amber-600":"hover:text-amber-500" }`}>Location</Link></li>
             <li><Link to={"/about"} onClick={()=>handleLinkClick('/about')} className={`${activeLink==='/about'? "text-amber-600":"hover:text-amber-500" }`}>About Us</Link></li>
           </ul>
-          <button className="hidden md:block bg-white text-black font-bold hover:bg-gray-300 hover:text-green-500 rounded py-2 px-4 ">Login</button>
+          <Link to={"/login"}><button className="hidden md:block bg-white text-black font-bold hover:bg-gray-300 hover:text-green-500 rounded py-2 px-4 ">Login</button></Link>
+          
 
           {/* Mobile responsive */}
 
